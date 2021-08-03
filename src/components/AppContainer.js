@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Main from "./Main/Welcome"
 
 export class AppContainer extends Component {
   render() {
     return (
       <div>
-        <p>Pronto para começar!</p>
+        <Main />
       </div>
     )
   }
