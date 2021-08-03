@@ -22,7 +22,7 @@ const ContainerButton = styled.div `
 `
 
 
-export default class Main extends React.Component {
+export default class Welcome extends React.Component {
     render () {
         return (
             <ContainerHome>

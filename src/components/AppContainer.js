@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Main from "./Main/Welcome"
+import Welcome from "./Main/Welcome";
+import Form from "./Main/Form";
 
 export class AppContainer extends Component {
   render() {
     return (
       <div>
-        <Main />
+        <Form />
       </div>
     )
   }
