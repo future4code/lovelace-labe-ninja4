@@ -1,0 +1,63 @@
+import React from "react";
+import styled from "styled-components";
+
+
+const ContainerHome = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const H1 = styled.h1 `
+    font-size: 36pt;
+`
+
+const Sub = styled.p `
+    font-size: 14pt;
+`
+
+const ContainerButton = styled.div `
+    display: flex;
+`
+
+
+export default class Form extends React.Component {
+    render () {
+        return (
+            <ContainerHome>
+                <form method="post">
+                <div>
+                    <label for="nome-servico">Nome do serviço:</label>
+                    <input type="text" id="nome-servico" />
+                </div>
+                <div>
+                    <label for="descricao-servico">Descrição do serviço:</label>
+                    <textarea id="descricao-servico"></textarea>
+                </div>
+                <div>
+                    <label for="valor-servico">Valor do serviço:</label>
+                    <input type="text" id="valor-servico" />
+                </div>
+                <div>
+                    <label for="forma-pagamento">Meio de Pagamento:</label>
+                    <select name="select-payament">
+                        <option value="dinheiro1">Dinheiro (Transferência bancária)</option>
+                        <option value="dinheiro2">Dinheiro (PIX)</option>
+                        <option value="cartao-debito">Cartão de Débito (PIX)</option>
+                        <option value="cartao-credito">Cartão de Crédito</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="data">Data da oferta:</label>
+                    <input type="date" id="descricao" />
+                </div>
+                <div>
+                    <button>Cadastrar Serviço</button>
+                </div>
+                
+            </form>
+            </ContainerHome>
+        )
+    }
+}
