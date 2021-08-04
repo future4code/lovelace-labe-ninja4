@@ -1,9 +1,12 @@
 import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import LayoutListaServico from './components/LayoutListaServicos'
+
 
 function App() {
 	return (
-        <AppContainer />
+		<div>
+				<LayoutListaServico />
+		</div>
 	)
 }
 
