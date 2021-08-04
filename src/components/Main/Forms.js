@@ -54,6 +54,7 @@ export default class Form extends React.Component {
                 </div>
                 <div>
                     <button>Cadastrar Serviço</button>
+                    <button onClick={this.props.irParaWelcome}>Voltar ao Inicio</button>
                 </div>
                 
             </form>

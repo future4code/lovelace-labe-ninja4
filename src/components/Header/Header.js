@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import logo from '../Header/logo.png'
 import { BarraDeNavegacao } from './EstilosHeader'
 import { Links } from './EstilosHeader'

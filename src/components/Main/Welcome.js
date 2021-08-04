@@ -23,16 +23,17 @@ const ContainerButton = styled.div `
 
 
 export default class Welcome extends React.Component {
+
     render () {
         return (
             <ContainerHome>
-                <H1>LabeNinjas</H1>
-                <Sub> O talento certo, no momento certo</Sub>
-                <ContainerButton>
-                    <button>Quero ser um ninja</button>
-                    <button>Contratar um ninja</button>
-                </ContainerButton>
-            </ContainerHome>
+            <H1>LabeNinjas</H1>
+            <Sub> O talento certo, no momento certo</Sub>
+            <ContainerButton>
+                <button onClick={this.props.irParaForms}>Quero ser um ninja</button>
+                <button>Contratar um ninja</button>
+            </ContainerButton>
+        </ContainerHome>
         )
     }
 }
