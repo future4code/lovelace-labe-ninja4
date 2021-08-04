@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import Main from "./Main/Welcome"
+import Main from "./Main/Welcome";
+import Forms from "./Main/Forms";
 
 export class AppContainer extends Component {
   render() {
     return (
       <div>
         <Main />
+        <p></p>
+        <Forms/>
       </div>
     )
   }
