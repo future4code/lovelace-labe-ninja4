@@ -14,6 +14,8 @@ export class AppContainer extends Component {
         return <Welcome irParaForms={this.selecionaForms}/>
       case "forms":
         return <Forms irParaWelcome={this.selecionaWelcome}/>  
+      case "cart":
+        return <Cart irParaWelcome={this.selecionaCart}/>  
       default:
         return <Welcome/>
     }
@@ -25,11 +27,15 @@ export class AppContainer extends Component {
     this.setState({telaAtual: "welcome"})
   }
 
+  selecionaCart = () =>{
+    this.setState({telaAtual: "cart"})
+  }
+
 
   render() {
     return (
       <div>
-        <Header/>
+        <Header irParaWelcome={this.selecionaWelcome} irParaCart={this.selecionaCart} />
         {this.escolheTela()}  
       </div>
     )

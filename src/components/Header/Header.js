@@ -8,12 +8,12 @@ import { Logo } from './EstilosHeader'
 const ItensMenu = [
     {
         titulo: 'Home',
-        endereço: '#',
+        onClick: irParaWelcome,
         nomeclasse: 'linksnevegacao'
     },
     {
         titulo: 'Carrinho',
-        endereço: '#',
+        onClick: irParaCart,
         nomeclasse: 'linksnevegacao'
     }
 ]
@@ -47,7 +47,7 @@ export default class Header extends React.Component {
 
                                     <div key={index}>
 
-                                        <Links className={item.nomeclasse} href={item.endereço}>
+                                        <Links className={item.nomeclasse} onClick={item.onClick}>
 
                                             {item.titulo}
 
