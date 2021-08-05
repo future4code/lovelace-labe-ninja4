@@ -14,6 +14,11 @@ export const Links = styled.a`
     grid-template-columns: repeat(5, auto);
     color: white;
     text-decoration: none;
+    &:hover {
+        background-color: #FFD5F7;
+        border-radius: 4px;
+        transition: all 0.2s ease-out;
+    }
 `
 export const LogoETitulo = styled.div`
     display: flex;
