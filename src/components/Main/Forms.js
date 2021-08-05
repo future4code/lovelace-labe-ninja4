@@ -23,6 +23,20 @@ const ContainerButton = styled.div `
 
 
 export default class Form extends React.Component {
+
+    createJobs = () => {
+        const url = "https://labeninjas.herokuapp.com/jobs"
+        const headers = (headers: {Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e"})
+        const body = {
+            title: this.state.jobs.title,
+            description: this.state.jobs.description
+            price: this.state.jobs.price
+
+        }
+    }
+
+
+
     render () {
         return (
             <ContainerHome>

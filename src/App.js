@@ -1,9 +1,15 @@
 import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import LayoutListaServico from './components/LayoutListaServicos'
+import RenderizarListaServico from './components/ListaServicos/RenderizarListaServico'
+
 
 function App() {
 	return (
-        <AppContainer />
+		<div>
+				<LayoutListaServico />
+				<hr />
+				<RenderizarListaServico />
+		</div>
 	)
 }
 

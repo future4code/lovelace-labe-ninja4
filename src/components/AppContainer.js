@@ -31,6 +31,7 @@ export class AppContainer extends Component {
       <div>
         <Header/>
         {this.escolheTela()}  
+        
       </div>
     )
   }
