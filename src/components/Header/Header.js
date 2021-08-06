@@ -1,51 +1,21 @@
-import React from 'react'
-import logo from '../Header/logo.png'
-import { BarraDeNavegacao } from './EstilosHeader'
-import { Links } from './EstilosHeader'
-import { LogoETitulo } from './EstilosHeader'
-import { Logo } from './EstilosHeader'
-
-const ItensMenu = [
-    {
-        titulo: 'Home',
-        endereço: `'../Main/Welcome`,
-        nomeclasse: 'linksnevegacao'
-    },
-    {
-        titulo: 'Carrinho',
-        endereço: '#',
-        nomeclasse: 'linksnevegacao'
-    }
-]
+import React from "react";
+import logo from "../Header/logo.png";
+import { HeaderContainer, Logo, Menu } from "./EstilosHeader";
 
 export default class Header extends React.Component {
+  render() {
+    return (
+      <HeaderContainer>
+        <Logo>
+          <img src={logo} alt="logo da Labeninjas" />
+          <h1>Labeninjas</h1>
+        </Logo>
 
-
-    render() {
-
-        return (
-
-            <div>
-                <BarraDeNavegacao>
-                    <LogoETitulo>
-                        <Logo src={logo} alt="logo da Labeninjas" />
-                        <h1>LabeNinjas</h1>
-                    </LogoETitulo>
-                    <div>
-                        <ul>
-                            {ItensMenu.map((item, index) => {
-                                return (
-                                    <div key={index}>
-                                        <Links className={item.nomeclasse} href={item.endereço}>
-                                            {item.titulo}
-                                        </Links>
-                                    </div>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </BarraDeNavegacao>
-            </div>
-        )
-    }
+        <Menu>
+          <p onClick={this.props.goToHomePage}>Home</p>
+          <p onClick={this.props.goToCartPage}>Carrinho</p>
+        </Menu>
+      </HeaderContainer>
+    );
+  }
 }
