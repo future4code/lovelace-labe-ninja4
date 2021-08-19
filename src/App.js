@@ -1,52 +1,111 @@
 import React from "react";
+import HomePage from "./pages/HomePage/HomePage";
+import JobsListPage from "./pages/JobsListPage/JobsListPage";
+import CreateJobPage from "./pages/CreateJobPage/CreateJobPage";
+import CartPage from "./pages/CartPage/CartPage";
+import JobDetailPage from "./pages/JobDetailPage/JobDetailPage";
 import Header from "./components/Header/Header";
-import HomePage from "./components/Main/HomePage";
-import CreateServicePage from "./components/Main/CreateServicePage";
-import CartPage from "./components/Main/CartPage";
-import ServiceListPage from "./components/Main/ServiceListPage";
+import { createGlobalStyle } from "styled-components";
 
-export default class App extends React.Component {
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+  }
+  input, select {
+    width: 310px;
+    margin-bottom: 12px;
+    padding: 4px;
+  }
+`;
+
+class App extends React.Component {
   state = {
-    currentPage: "homepage",
+    currentPage: "home",
+    jobDetailId: "",
+    cart: [],
   };
 
-  goToServiceListPage = () => this.setState({ currentPage: "servicelist" });
+  changePage = (pageName) => {
+    this.setState({ currentPage: pageName });
+  };
 
-  goToCreateServicePage = () => this.setState({ currentPage: "servicepage" });
+  goToDetailPage = (jobId) => {
+    this.setState({ currentPage: "detail", jobDetailId: jobId });
+  };
 
-  goToCartPage = () => this.setState({ currentPage: "cartpage" });
+  addToCart = (job) => {
+    const newCart = [...this.state.cart, job];
+    this.setState({ cart: newCart });
+    alert(`O serviço ${job.title} foi adicionado ao carrinho.`);
+  };
 
-  goToHomePage = () => this.setState({ currentPage: "homepage" });
+  removeFromCart = (id) => {
+    const canDelete = window.confirm(
+      "Tem certeza que deseja remover esse serviço?"
+    );
 
-  selectPage = () => {
+    if (canDelete) {
+      const newCart = this.state.cart.filter((cartItem) => {
+        return cartItem.id !== id;
+      });
+
+      this.setState({ cart: newCart });
+    }
+  };
+
+  clearCart = () => {
+    this.setState({ cart: [] });
+    alert("Obrigado por comprar conosco.");
+  };
+
+  choosePage = () => {
     switch (this.state.currentPage) {
-      case "homepage":
+      case "home":
+        return <HomePage changePage={this.changePage} />;
+      case "list":
         return (
-          <HomePage
-            goToServiceListPage={this.goToServiceListPage}
-            goToCreateServicePage={this.goToCreateServicePage}
+          <JobsListPage
+            addToCart={this.addToCart}
+            goToDetailPage={this.goToDetailPage}
           />
         );
-      case "servicepage":
-        return <CreateServicePage goToHomePage={this.goToHomePage} />;
-      case "cartpage":
-        return <CartPage goToServiceListPage={this.goToServiceListPage} />;
-      case "servicelist":
-        return <ServiceListPage />;
+      case "form":
+        return <CreateJobPage />;
+      case "cart":
+        return (
+          <CartPage
+            cart={this.state.cart}
+            removeFromCart={this.removeFromCart}
+            clearCart={this.clearCart}
+          />
+        );
+      case "detail":
+        return (
+          <JobDetailPage
+            changePage={this.changePage}
+            jobId={this.state.jobDetailId}
+          />
+        );
       default:
-        return <HomePage />;
+        return <HomePage changePage={this.changePage} />;
     }
   };
 
   render() {
     return (
       <div>
-        <Header
-          goToHomePage={this.goToHomePage}
-          goToCartPage={this.goToCartPage}
-        />
-        {this.selectPage()}
+        <GlobalStyle />
+        <Header changePage={this.changePage} />
+        {this.choosePage()}
       </div>
     );
   }
 }
+
+export default App;
